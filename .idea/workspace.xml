@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="031b9784-27b7-4bf4-bf45-a7d907f0ffaa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Quizer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/task_generators/TaskGenerators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/task_generators/math_task_generators.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/tasks/Tasks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/tasks/math_tasks.java" afterDir="false" />
+    <list default="true" id="031b9784-27b7-4bf4-bf45-a7d907f0ffaa" name="Changes" comment="GroupTaskGenerator v1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/task_generators/TaskGenerators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/task_generators/TaskGenerators.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2IEvjZ0rmiRiS5YeuAT62wCm5Sr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,7 +40,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="by.Kirill_Chigiryov.quizer.Main" />
       <module name="Quizer" />
@@ -50,9 +54,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TaskGenerators" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="by.Kirill_Chigiryov.quizer.task_generators.TaskGenerators" />
+      <module name="Quizer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="by.Kirill_Chigiryov.quizer.task_generators.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TaskGenerators" />
       </list>
     </recent_temporary>
   </component>
@@ -65,6 +83,14 @@
       <option name="presentableId" value="Default" />
       <updated>1669759694955</updated>
     </task>
+    <task id="LOCAL-00001" summary="GroupTaskGenerator v1.0">
+      <created>1669760034819</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669760034819</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -77,5 +103,25 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GroupTaskGenerator v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="GroupTaskGenerator v1.0" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/Kirill_Chigiryov/quizer/task_generators/TaskGenerators.java</url>
+          <line>427</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

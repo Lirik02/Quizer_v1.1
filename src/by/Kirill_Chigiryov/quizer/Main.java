@@ -3,7 +3,6 @@ package by.Kirill_Chigiryov.quizer;
 import by.Kirill_Chigiryov.quizer.task_generators.*;
 import by.Kirill_Chigiryov.quizer.tasks.*;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -203,19 +202,19 @@ public class Main {
         taskCollection.add(new TaskGenerators.EquationTaskGenerator(-50, -5,
                 false, false, false, true));
         Quiz groupCollectionQuiz = new Quiz(new TaskGenerators.GroupTaskGenerator(taskCollection), 4);
-//        Quiz poolQuiz = new Quiz(new TaskGenerators.PoolTaskGenerator(true,
-//                new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
-//                        "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
-//                        "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"),
-//                new Tasks.ExpressionTask("5*13=?", "65"),
-//                new Tasks.EquationTask("x+45=23", "-22")), 5);
-//        Collection<Task> tasks = new ArrayList<>();
-//        tasks.add(new Tasks.EquationTask("x+45=23", "-22"));
-//        tasks.add(new Tasks.ExpressionTask("5*13=?", "65"));
-//        tasks.add(new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
-//                "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
-//                "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"));
-//        Quiz poolQuizCollection = new Quiz(new TaskGenerators.PoolTaskGenerator(false, tasks), 3);
+        Quiz poolQuiz = new Quiz(new TaskGenerators.PoolTaskGenerator(true,
+                new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
+                        "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
+                        "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"),
+                new Tasks.ExpressionTask("5*13=?", "65"),
+                new Tasks.EquationTask("x+45=23", "-22")), 5);
+        Collection<Task> tasks = new ArrayList<>();
+        tasks.add(new Tasks.EquationTask("x+45=23", "-22"));
+        tasks.add(new Tasks.ExpressionTask("5*13=?", "65"));
+        tasks.add(new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
+                "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
+                "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"));
+        Quiz poolQuizCollection = new Quiz(new TaskGenerators.PoolTaskGenerator(false, tasks), 3);
         Quiz emptyGroupTest =
                 new Quiz(new TaskGenerators.GroupTaskGenerator(), 0);
 //        Quiz quiz7 = new Quiz();
@@ -228,9 +227,8 @@ public class Main {
         quizMap.put("Quiz 2", equationQuiz);
         quizMap.put("Quiz 3", groupQuiz);
         quizMap.put("Quiz 4", groupCollectionQuiz);
-//        quizMap.put("Quiz 5", poolQuiz);
-        quizMap.put("Quiz 6", emptyGroupTest);
-        quizMap.put("Quiz 7", emptyGroupTest);
+        quizMap.put("Quiz 5", poolQuiz);
+        quizMap.put("Quiz 6", poolQuizCollection);
 
         return quizMap;
     }

@@ -336,7 +336,7 @@ public class TaskGenerators {
          * @param generators генераторы, которые передаются в конструктор в Collection (например, {@link ArrayList})
          */
         public GroupTaskGenerator(Collection<Main.TaskGenerator> generators) {
-            taskGenerators = new ArrayList<>(generators.stream().toList());
+            List<Main.TaskGenerator> taskGenerators = new ArrayList<>(generators.stream().toList());
             tasks = new ArrayList<>();
             for (int i = 0; i < generators.size(); ++i) {
                 taskIDs.add(i);
@@ -366,10 +366,9 @@ public class TaskGenerators {
             return task;
         }
 
-        private List<Main.Task> tasks;
-        private List<Main.TaskGenerator> taskGenerators;
+        private final List<Main.Task> tasks;
         private int taskID;
-        private List<Integer> taskIDs = new ArrayList<>();
+        private final List<Integer> taskIDs = new ArrayList<>();
 
     }
 
@@ -382,12 +381,26 @@ public class TaskGenerators {
          * @param tasks          задания, которые в конструктор передаются через запятую
          */
         public PoolTaskGenerator(boolean allowDuplicate, Main.Task... tasks) {
-            this.tasks = new Main.Task[tasks.length];
-            if (allowDuplicate) {
-                System.arraycopy(tasks, 0, this.tasks, 0, tasks.length);
-            } else {
-                List<Main.Task> temp = new ArrayList<>(Arrays.asList(tasks));
-                this.tasks = (Main.Task[]) temp.stream().distinct().toArray();
+            this.tasks = new ArrayList<>();
+            Collections.addAll(this.tasks, tasks);
+            if (!allowDuplicate) {
+                boolean isRepeated = false;
+                for (int i = 0; i < tasks.length; i++) {
+                    for (int j = 0; j < i; j++) {
+                        if (tasks[i].getText().equals(tasks[j].getText())) {
+                            isRepeated = true;
+                            break;
+                        }
+                    }
+                    if (!isRepeated) {
+                        this.tasks.add(tasks[i]);
+                    } else {
+                        isRepeated = false;
+                    }
+                }
+            }
+            for (int i = 0; i < this.tasks.size(); ++i) {
+                taskIDs.add(i);
             }
         }
 
@@ -399,49 +412,60 @@ public class TaskGenerators {
          */
         public PoolTaskGenerator(boolean allowDuplicate,
                                  Collection<Main.Task> tasks) {
-            if (allowDuplicate) {
-                this.tasks = (Main.Task[]) tasks.toArray();
-            } else {
-                this.tasks = (Main.Task[]) tasks.stream().distinct().toArray();
+            this.tasks = new ArrayList<>(tasks);
+            if (!allowDuplicate) {
+                this.tasks = this.tasks.stream().distinct().toList();
             }
-            taskID = (int) (Math.random() * tasks.size());
+            for (int i = 0; i < this.tasks.size(); ++i) {
+                taskIDs.add(i);
+            }
         }
 
         /**
          * @return случайная задача из списка
          */
         public Main.Task generate() {
-            return tasks[taskID];
+            if (taskIDs.size() == 1) {
+                int ID = taskIDs.get(0);
+                taskIDs.remove(0);
+                return tasks.get(ID);
+            }
+            int thisTaskID = taskID;
+            if (thisTaskID == taskIDs.size()) {
+                thisTaskID--;
+            }
+            if (thisTaskID == -1) {
+                thisTaskID++;
+            }
+            Main.Task task = tasks.get(taskIDs.get(thisTaskID));
+            taskIDs.remove(thisTaskID);
+            taskID = (int) (Math.random() * taskIDs.size());
+            return task;
         }
 
-        private Main.Task[] tasks;
+        private List<Main.Task> tasks;
         private int taskID;
+        private final List<Integer> taskIDs = new ArrayList<>();
 
     }
 
 //    public static void main(String[] args) throws InterruptedException {
-//        GroupTaskGenerator taskGenerator = new GroupTaskGenerator(
-//                        new TaskGenerators.ExpressionTaskGenerator(-50, -5,
-//                                false, false, false, true),
-//                        new TaskGenerators.EquationTaskGenerator(-50, -5,
-//                                false, false, false, true),
-//                        new TaskGenerators.ExpressionTaskGenerator(-50, -5,
-//                        false, false, false, true),
-//                        new TaskGenerators.EquationTaskGenerator(-50, -5,
-//                        false, false, false, true));
-//        Collection<Main.TaskGenerator> taskCollection = new ArrayList<>();
-//        taskCollection.add(new TaskGenerators.ExpressionTaskGenerator(-50, -5,
-//                false, false, false, true));
-//        taskCollection.add(new TaskGenerators.EquationTaskGenerator(-50, -5,
-//                false, false, false, true));
-//        taskCollection.add(new TaskGenerators.ExpressionTaskGenerator(-50, -5,
-//                false, false, false, true));
-//        taskCollection.add(new TaskGenerators.EquationTaskGenerator(-50, -5,
-//                false, false, false, true));
-//        GroupTaskGenerator taskGenerator1 = new TaskGenerators.GroupTaskGenerator(taskCollection);
-//        Main.Task[] arr = new Main.Task[4];
-//        for (int i = 0; i < 4; i++) {
-//            arr[i] = taskGenerator1.generate();
+//        PoolTaskGenerator poolQuiz = new TaskGenerators.PoolTaskGenerator(true,
+//                new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
+//                        "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
+//                        "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"),
+//                new Tasks.ExpressionTask("5*13=?", "65"),
+//                new Tasks.EquationTask("x+45=23", "-22"));
+//        Collection<Main.Task> tasks = new ArrayList<>();
+//        tasks.add(new Tasks.EquationTask("x+45=23", "-22"));
+//        tasks.add(new Tasks.ExpressionTask("5*13=?", "65"));
+//        tasks.add(new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
+//                "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
+//                "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"));
+//        PoolTaskGenerator poolQuiz1 = new TaskGenerators.PoolTaskGenerator(false, tasks);
+//        Main.Task[] arr = new Main.Task[3];
+//        for (int i = 0; i < 3; i++) {
+//            arr[i] = poolQuiz1.generate();
 //        }
 //    }
 }
