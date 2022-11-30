@@ -178,7 +178,7 @@ public class TaskGenerators {
             }
 
             String sign;
-            ArrayList<String> signs = new ArrayList<String>();
+            ArrayList<String> signs = new ArrayList<>();
             if (generateDifference) {
                 signCount++;
                 signs.add("-");
@@ -228,12 +228,6 @@ public class TaskGenerators {
                     }
                 }
                 rightAnswer = String.valueOf(secondNumber / firstNumber);
-//                if (secondNumber % firstNumber != 0) {
-//                    while (secondNumber % firstNumber != 0) {
-//                        firstNumber++;
-//                    }
-//                }
-//                rightAnswer = String.valueOf(secondNumber / firstNumber);
             }
 
             if (sign.equals("/") && xPosition == 1) {
@@ -252,12 +246,6 @@ public class TaskGenerators {
                     }
                 }
                 rightAnswer = String.valueOf(firstNumber / secondNumber);
-//                if (firstNumber % secondNumber != 0) {
-//                    while (firstNumber % secondNumber != 0) {
-//                        secondNumber++;
-//                    }
-//                }
-//                rightAnswer = String.valueOf(firstNumber / secondNumber);
             } else if (sign.equals("/") && xPosition == 0) {
                 rightAnswer = String.valueOf(firstNumber * secondNumber);
             }
@@ -448,24 +436,4 @@ public class TaskGenerators {
         private final List<Integer> taskIDs = new ArrayList<>();
 
     }
-
-//    public static void main(String[] args) throws InterruptedException {
-//        PoolTaskGenerator poolQuiz = new TaskGenerators.PoolTaskGenerator(true,
-//                new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
-//                        "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
-//                        "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"),
-//                new Tasks.ExpressionTask("5*13=?", "65"),
-//                new Tasks.EquationTask("x+45=23", "-22"));
-//        Collection<Main.Task> tasks = new ArrayList<>();
-//        tasks.add(new Tasks.EquationTask("x+45=23", "-22"));
-//        tasks.add(new Tasks.ExpressionTask("5*13=?", "65"));
-//        tasks.add(new Tasks.TextTask("В магазине было 6 ящиков с яблоками. " +
-//                "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
-//                "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"));
-//        PoolTaskGenerator poolQuiz1 = new TaskGenerators.PoolTaskGenerator(false, tasks);
-//        Main.Task[] arr = new Main.Task[3];
-//        for (int i = 0; i < 3; i++) {
-//            arr[i] = poolQuiz1.generate();
-//        }
-//    }
 }

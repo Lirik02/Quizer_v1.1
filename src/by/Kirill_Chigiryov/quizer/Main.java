@@ -207,7 +207,7 @@ public class Main {
                         "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
                         "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"),
                 new Tasks.ExpressionTask("5*13=?", "65"),
-                new Tasks.EquationTask("x+45=23", "-22")), 5);
+                new Tasks.EquationTask("x+45=23", "-22")), 3);
         Collection<Task> tasks = new ArrayList<>();
         tasks.add(new Tasks.EquationTask("x+45=23", "-22"));
         tasks.add(new Tasks.ExpressionTask("5*13=?", "65"));
@@ -215,12 +215,6 @@ public class Main {
                 "На следующий день они получили пополнение в кол-ве 13 ящиков с яблоками." +
                 "Сколько ящиков с яблоками стало в магазине после пополнения?", "19"));
         Quiz poolQuizCollection = new Quiz(new TaskGenerators.PoolTaskGenerator(false, tasks), 3);
-        Quiz emptyGroupTest =
-                new Quiz(new TaskGenerators.GroupTaskGenerator(), 0);
-//        Quiz quiz7 = new Quiz();
-//        Quiz quiz8 = new Quiz();
-//        Quiz quiz9 = new Quiz();
-//        Quiz quiz10 = new Quiz();
 
         Map<String, Quiz> quizMap = new HashMap<>();
         quizMap.put("Quiz 1", expressionQuiz);
